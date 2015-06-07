@@ -17,11 +17,13 @@ Sys.setlocale("LC_TIME", "C")
 png(filename="plot3.png", width=480, height=480)
 
 # Creates the scatterplot, adds titles, lines, legend.
-plot(hpc$date_time, hpc$Sub_metering_1, type="l", xlab = "", ylab = "Energy sub metering")
-lines(hpc$date_time, hpc$Sub_metering_2, col="red")
-lines(hpc$date_time, hpc$Sub_metering_3, col="blue")
-legend("topright", pch = "_", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-
+with(hpc, {
+  plot(date_time, Sub_metering_1, type="l", xlab = "", ylab = "Energy sub metering")
+  lines(date_time, Sub_metering_2, col="red")
+  lines(date_time, Sub_metering_3, col="blue")
+  legend("topright", pch = "_", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+})
+  
 # Closes the png device.
 dev.off()
 
